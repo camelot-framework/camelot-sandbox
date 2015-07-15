@@ -1,0 +1,91 @@
+dns:
+  image: tonistiigi/dnsdock
+  volumes:
+    - /var/run/docker.sock:/run/docker.sock
+  ports:
+    - 172.17.42.1:53:53/udp
+  command: /go/bin/dnsdock -domain dc
+
+maven1:
+  extends:
+    file: common-services.yml
+    service: maven
+  volumes:
+    - ~/.m2/repository:/usr/share/nginx/html
+  environment:
+    DNSDOCK_ALIAS: maven1.dc
+
+maven2:
+  extends:
+    file: common-services.yml
+    service: maven
+  volumes:
+    - target/repo:/usr/share/nginx/html
+  environment:
+    DNSDOCK_ALIAS: maven2.dc
+
+activemq:
+  image: rmohr/activemq
+  user: root
+  restart: always
+  links:
+    - dns:dns
+  ports:
+    - 61616:61616
+    - 8616:8616
+    - 8116:8116
+  dns: 172.17.42.1
+  volumes:
+    - src/main/resources/activemq/conf:/etc/activemq/conf:ro
+  environment:
+    ACTIVEMQ_CONF: /etc/activemq/conf
+    ACTIVEMQ_DATA: /var/lib/activemq/data
+    DNSDOCK_ALIAS: activemq.dc
+
+camelot1:
+  extends:
+    file: common-services.yml
+    service: camelot
+  ports:
+    - 18081:18082
+  environment:
+    DNSDOCK_ALIAS: camelot1.dc
+
+camelot2:
+  extends:
+    file: common-services.yml
+    service: camelot
+  ports:
+    - 18082:18082
+  environment:
+    DNSDOCK_ALIAS: camelot2.dc
+
+camelot3:
+  extends:
+    file: common-services.yml
+    service: camelot
+  ports:
+    - 18083:18082
+  environment:
+    DNSDOCK_ALIAS: camelot3.dc
+
+hazelcast1:
+  extends:
+    file: common-services.yml
+    service: hazelcast
+  environment:
+    DNSDOCK_ALIAS: hazelcast1.dc
+
+hazelcast2:
+  extends:
+    file: common-services.yml
+    service: hazelcast
+  environment:
+    DNSDOCK_ALIAS: hazelcast2.dc
+
+hazelcast3:
+  extends:
+    file: common-services.yml
+    service: hazelcast
+  environment:
+    DNSDOCK_ALIAS: hazelcast3.dc
