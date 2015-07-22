@@ -16,7 +16,7 @@ camelot:
   environment:
     JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
 hazelcast:
-  image: hazelcast/hazelcast:3.5
+  build: src/main/resources/hazelcast/
   expose:
     - 5701:5701
   dns: 172.17.42.1
