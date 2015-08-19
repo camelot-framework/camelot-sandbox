@@ -20,6 +20,11 @@ $ docker-compose up -d
 ```bash
 $ curl http://localhost:18082/collect/put?key={AGG_KEY}
 ```
+or if you are on Mac:
+```bash
+$ curl http://$(boot2docker ip):18082/collect/put?key={AGG_KEY}
+```
+
 * Get state via
 ```bash
 $ curl http://localhost:18082/collect/get?key={AGG_KEY}
