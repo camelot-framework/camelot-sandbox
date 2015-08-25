@@ -75,6 +75,7 @@ hazelcast1:
     service: hazelcast
   environment:
     DNSDOCK_ALIAS: hazelcast1.dc
+  privileged: true
 
 hazelcast2:
   extends:
@@ -82,6 +83,7 @@ hazelcast2:
     service: hazelcast
   environment:
     DNSDOCK_ALIAS: hazelcast2.dc
+  privileged: true
 
 hazelcast3:
   extends:
@@ -89,3 +91,4 @@ hazelcast3:
     service: hazelcast
   environment:
     DNSDOCK_ALIAS: hazelcast3.dc
+  privileged: true

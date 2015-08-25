@@ -1,4 +1,6 @@
 FROM java:7
+RUN apt-get update && apt-get install -y iptables
+
 ENV HZ_VERSION 3.5
 ENV HZ_HOME /opt/hazelcast/
 RUN mkdir -p $HZ_HOME
