@@ -6,23 +6,14 @@ dns:
     - 172.17.42.1:53:53/udp
   command: /go/bin/dnsdock -domain dc
 
-maven1:
+maven:
   extends:
     file: common-services.yml
     service: maven
   volumes:
     - ~/.m2/repository:/usr/share/nginx/html
   environment:
-    DNSDOCK_ALIAS: maven1.dc
-
-maven2:
-  extends:
-    file: common-services.yml
-    service: maven
-  volumes:
-    - target/repo:/usr/share/nginx/html
-  environment:
-    DNSDOCK_ALIAS: maven2.dc
+    DNSDOCK_ALIAS: maven-local.dc
 
 activemq:
   image: rmohr/activemq
@@ -59,15 +50,6 @@ camelot2:
     - 18082:18082
   environment:
     DNSDOCK_ALIAS: camelot2.dc
-
-camelot3:
-  extends:
-    file: common-services.yml
-    service: camelot
-  ports:
-    - 18083:18082
-  environment:
-    DNSDOCK_ALIAS: camelot3.dc
 
 hazelcast1:
   extends:

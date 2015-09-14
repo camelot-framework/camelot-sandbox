@@ -12,7 +12,7 @@ camelot:
     - target/camelot/lib:/etc/camelot/lib:ro
     - target/camelot/plugins:/etc/camelot/plugins:ro
     - target/camelot/webapps:/etc/camelot/webapps:ro
-  command: /bin/sh -c 'chmod +x /etc/camelot/bin/run.sh && /etc/camelot/bin/run.sh start && tail -f /etc/camelot/log/camelot.log'
+  command: /bin/sh -c '/etc/camelot/bin/camelot.sh start && sleep 4 && tail -f /etc/camelot/log/camelot-full.log'
   environment:
     JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
 hazelcast:
