@@ -29,16 +29,4 @@
             <hz:member>hazelcast3.dc:5701</hz:member>
         </hz:network>
     </hz:client>
-
-    <bean id="pluginInitializer" class="ru.yandex.qatools.camelot.core.impl.PluginInitializerWithHazelcastImpl">
-        <constructor-arg name="hazelcastInstance" ref="hazelcastInstance"/>
-    </bean>
-
-    <!-- Builders Factories -->
-    <bean id="FACTORY-HZ" class="ru.yandex.qatools.camelot.core.builders.BuildersFactoryWithHazelcastImpl">
-        <constructor-arg name="hazelcastInstance" ref="hazelcastInstance"/>
-        <property name="waitForLockSec" value="${camelot.hazelcast.waitForLockSec}"/>
-        <property name="lockWaitHeartBeatSec" value="${camelot.hazelcast.lockWaitHeartBeatSec}"/>
-    </bean>
-
 </beans>
