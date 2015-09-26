@@ -33,3 +33,6 @@ or if you are on Mac:
 ```bash
 $ curl http://$(boot2docker ip):18082/collect/get?key={AGG_KEY}
 ```
+
+* Display kafka manager console:
+Navigate to http://localhost:9000 and then add a new cluster at zoookeeper.dc:2181

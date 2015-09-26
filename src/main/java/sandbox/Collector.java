@@ -26,7 +26,6 @@ public class Collector {
         state.key = event;
         state.index++;
         logger.info("New index {}={}...", state.key, state.index);
-        Thread.sleep(1000);
     }
 
     @OnTimer(cron = "*/10 * * * * ?", readOnly = false, skipIfNotCompleted = true)

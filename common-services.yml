@@ -9,10 +9,11 @@ camelot:
   volumes:
     - target/camelot/bin:/etc/camelot/bin
     - src/main/resources/camelot/conf:/etc/camelot/conf:ro
-    - target/camelot/lib:/etc/camelot/lib:ro
+    - target/extensions:/etc/camelot/extensions:ro
+    - target/camelot/lib:/etc/camelot/lib
     - target/camelot/plugins:/etc/camelot/plugins:ro
     - target/camelot/webapps:/etc/camelot/webapps:ro
-  command: /bin/sh -c '/etc/camelot/bin/camelot.sh start && sleep 4 && tail -f /etc/camelot/log/camelot-full.log'
+  command: /bin/bash -c '/etc/camelot/bin/camelot.sh start && touch /etc/camelot/log/camelot-full.log && tail -f /etc/camelot/log/camelot-full.log'
   environment:
     JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
 hazelcast:
@@ -25,3 +26,13 @@ hazelcast:
   volumes:
     - src/main/resources/hazelcast:/run:ro
   command: /bin/sh -c '/run/run.sh'
+
+kafka:
+  image: samsara/kafka
+  expose:
+    - "9092:9092"
+  dns: 172.17.42.1
+  environment:
+    ZOOKEEPER_PORT_2181_TCP_ADDR: zookeeper.dc:2181
+    KAFKA_BROKER_PORT: 9092
+

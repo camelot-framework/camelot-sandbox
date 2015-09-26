@@ -10,6 +10,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
+import java.util.List;
 
 @Path("/collect")
 public class InputResource {
@@ -32,5 +34,17 @@ public class InputResource {
     @Produces("application/json")
     public State get(@QueryParam("key") String key) {
         return repo.get(key);
+    }
+
+
+    @GET
+    @Path("list")
+    @Produces("application/json")
+    public List<State> list() {
+        final List<State> result = new ArrayList<State>();
+        for (String key : repo.keys()) {
+            result.add(repo.get(key));
+        }
+        return result;
     }
 }

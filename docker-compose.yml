@@ -6,14 +6,74 @@ dns:
     - 172.17.42.1:53:53/udp
   command: /go/bin/dnsdock -domain dc
 
-maven:
+zookeeper:
+  image: samsara/zookeeper
+  expose:
+    - "2181:2181"
+    - "15001:15000"
+  links:
+    - dns:dns
+  dns: 172.17.42.1
+  environment:
+    ZK_SERVER_ID: 1
+    HOSTNAME: zookeeper.dc
+    DNSDOCK_ALIAS: zookeeper.dc
+  volumes:
+    - target/logs/zk1:/logs
+    - target/data/zk1:/data
+
+kafka1:
   extends:
     file: common-services.yml
-    service: maven
-  volumes:
-    - ~/.m2/repository:/usr/share/nginx/html
+    service: kafka
+  expose:
+    - "15002:15000"
+  links:
+    - dns:dns
   environment:
-    DNSDOCK_ALIAS: maven-local.dc
+    KAFKA_BROKER_ID: 1
+    DNSDOCK_ALIAS: kafka1.dc
+    HOSTNAME: kafka1.dc
+    ADV_IP: kafka1.dc
+
+kafka2:
+  extends:
+    file: common-services.yml
+    service: kafka
+  expose:
+    - "15003:15000"
+  links:
+    - dns:dns
+  environment:
+    KAFKA_BROKER_ID: 2
+    DNSDOCK_ALIAS: kafka2.dc
+    HOSTNAME: kafka2.dc
+    ADV_IP: kafka2.dc
+
+kafka3:
+  extends:
+    file: common-services.yml
+    service: kafka
+  expose:
+    - "15004:15000"
+  links:
+    - dns:dns
+  environment:
+    KAFKA_BROKER_ID: 3
+    DNSDOCK_ALIAS: kafka3.dc
+    HOSTNAME: kafka3.dc
+    ADV_IP: kafka3.dc
+
+kafkamanager:
+  image: sheepkiller/kafka-manager
+  ports:
+    - "9000:9000"
+  dns: 172.17.42.1
+  links:
+    - dns:dns
+  environment:
+    ZK_HOSTS: zookeeper.dc:2181
+    DNSDOCK_ALIAS: kafkamanager.dc
 
 activemq:
   image: rmohr/activemq
@@ -50,24 +110,3 @@ camelot2:
     - 18082:18082
   environment:
     DNSDOCK_ALIAS: camelot2.dc
-
-hazelcast1:
-  extends:
-    file: common-services.yml
-    service: hazelcast
-  environment:
-    DNSDOCK_ALIAS: hazelcast1.dc
-
-hazelcast2:
-  extends:
-    file: common-services.yml
-    service: hazelcast
-  environment:
-    DNSDOCK_ALIAS: hazelcast2.dc
-
-hazelcast3:
-  extends:
-    file: common-services.yml
-    service: hazelcast
-  environment:
-    DNSDOCK_ALIAS: hazelcast3.dc
