@@ -4,6 +4,7 @@
         <artifact>${project.groupId}:${project.artifactId}:${project.version}</artifact>
         <broker>
             <param name="producerType" value="async"/>
+            <param name="partitioner" value="kafka.producer.ByteArrayPartitioner"/>
         </broker>
         <plugin id="collector">
             <aggregator>sandbox.Collector</aggregator>
