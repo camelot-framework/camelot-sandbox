@@ -75,24 +75,6 @@ kafkamanager:
     ZK_HOSTS: zookeeper.dc:2181
     DNSDOCK_ALIAS: kafkamanager.dc
 
-activemq:
-  image: rmohr/activemq
-  user: root
-  restart: always
-  links:
-    - dns:dns
-  ports:
-    - 61616:61616
-    - 8616:8616
-    - 8116:8116
-  dns: 172.17.42.1
-  volumes:
-    - src/main/resources/activemq/conf:/etc/activemq/conf:ro
-  environment:
-    ACTIVEMQ_CONF: /etc/activemq/conf
-    ACTIVEMQ_DATA: /var/lib/activemq/data
-    DNSDOCK_ALIAS: activemq.dc
-
 camelot1:
   extends:
     file: common-services.yml

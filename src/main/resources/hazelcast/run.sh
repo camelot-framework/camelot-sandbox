@@ -50,4 +50,5 @@ cat <<XML > /opt/hazelcast/hazelcast.xml
 XML
 
 cd $HZ_HOME
-java -server -cp hazelcast-$HZ_VERSION.jar com.hazelcast.core.server.StartServer
+MEMORY_OPTS="-XX:MaxPermSize=512m -Xms512m -Xmx1024m"
+java $MEMORY_OPTS -server -cp hazelcast-$HZ_VERSION.jar com.hazelcast.core.server.StartServer
