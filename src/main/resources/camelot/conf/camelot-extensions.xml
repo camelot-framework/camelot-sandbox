@@ -11,22 +11,22 @@
             http://www.springframework.org/schema/context
             http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <!--<hz:client id="hazelcastInstance">-->
-        <!--<hz:group name="sandbox" password="sandbox" />-->
-        <!--<hz:properties>-->
-            <!--<hz:property name="hazelcast.logging.type">slf4j</hz:property>-->
-            <!--<hz:property name="hazelcast.prefer.ipv4.stack">true</hz:property>-->
-            <!--<hz:property name="hazelcast.client.heartbeat.timeout">30000</hz:property>-->
-            <!--<hz:property name="hazelcast.client.heartbeat.interval">1000</hz:property>-->
-        <!--</hz:properties>-->
-        <!--<hz:network connection-attempt-limit="3"-->
-                    <!--connection-attempt-period="3000"-->
-                    <!--connection-timeout="1000"-->
-                    <!--redo-operation="true"-->
-                    <!--smart-routing="true">-->
-            <!--<hz:member>hazelcast1.dc:5701</hz:member>-->
-            <!--<hz:member>hazelcast2.dc:5701</hz:member>-->
-            <!--<hz:member>hazelcast3.dc:5701</hz:member>-->
-        <!--</hz:network>-->
-    <!--</hz:client>-->
+    <hz:client id="hazelcastInstance">
+        <hz:group name="sandbox" password="sandbox" />
+        <hz:properties>
+            <hz:property name="hazelcast.logging.type">slf4j</hz:property>
+            <hz:property name="hazelcast.prefer.ipv4.stack">true</hz:property>
+            <hz:property name="hazelcast.client.heartbeat.timeout">30000</hz:property>
+            <hz:property name="hazelcast.client.heartbeat.interval">1000</hz:property>
+        </hz:properties>
+        <hz:network connection-attempt-limit="3"
+                    connection-attempt-period="3000"
+                    connection-timeout="1000"
+                    redo-operation="true"
+                    smart-routing="true">
+            <hz:member>hazelcast1.dc:5701</hz:member>
+            <hz:member>hazelcast2.dc:5701</hz:member>
+            <hz:member>hazelcast3.dc:5701</hz:member>
+        </hz:network>
+    </hz:client>
 </beans>

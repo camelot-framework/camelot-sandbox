@@ -3,8 +3,10 @@
     <source>
         <artifact>${project.groupId}:${project.artifactId}:${project.version}</artifact>
         <broker>
-            <param name="producerType" value="async"/>
-            <param name="partitioner" value="kafka.producer.ByteArrayPartitioner"/>
+            <param name="concurrentConsumers" value="10"/>
+            <param name="maxConcurrentConsumers" value="50"/>
+            <param name="destination.consumer.prefetchSize" value="1"/>
+            <param name="maxMessagesPerTask" value="1"/>
         </broker>
         <plugin id="collector">
             <aggregator>sandbox.Collector</aggregator>
