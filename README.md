@@ -1,5 +1,7 @@
 # Camelot Sandbox
 
+Example allowing to launch camelot plugin project with the Kafka multi-node environment
+
 ## Prerequisites
 * Docker >= 1.6.2
 * Docker Compose >= 1.3.1
@@ -35,4 +37,5 @@ $ curl http://$(boot2docker ip):18082/collect/get?key={AGG_KEY}
 ```
 
 * Display kafka manager console:
+
 Navigate to http://localhost:9000 and then add a new cluster at zoookeeper.dc:2181
