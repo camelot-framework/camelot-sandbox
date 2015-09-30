@@ -7,6 +7,7 @@ Example allowing to launch camelot plugin project with the default single-node e
 * Docker Compose >= 1.3.1
 * JDK >= 1.7
 * Maven >= 3.13
+* Boot2Docker (on Mac)
 
 ## How to use
 * Clone project
