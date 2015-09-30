@@ -1,10 +1,12 @@
 # Camelot Sandbox
+Example allowing to launch camelot plugin project with the ActiveMQ & Hazelcast multi-node environment
 
 ## Prerequisites
 * Docker >= 1.6.2
 * Docker Compose >= 1.3.1
 * JDK >= 1.7
 * Maven >= 3.13
+* Boot2Docker (on Mac)
 
 ## How to use
 * Clone project
@@ -34,5 +36,6 @@ or if you are on Mac:
 $ curl http://$(boot2docker ip):18082/collect/get?key={AGG_KEY}
 ```
 
-* Display kafka manager console:
-Navigate to http://localhost:9000 and then add a new cluster at zoookeeper.dc:2181
+* Display ActiveMQ manager console:
+Navigate to http://localhost:8616/admin/queues.jsp 
+or http://$(boot2docker ip):8616/admin/queues.jsp (for boot2docker).
