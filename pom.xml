@@ -112,12 +112,14 @@
                                     <groupId>ru.yandex.qatools.camelot</groupId>
                                     <artifactId>camelot-activemq</artifactId>
                                     <overWrite>true</overWrite>
+                                    <classifier>full</classifier>
                                     <version>${camelot.version}</version>
                                 </artifactItem>
                                 <artifactItem>
                                     <groupId>ru.yandex.qatools.camelot</groupId>
                                     <artifactId>camelot-hazelcast</artifactId>
                                     <overWrite>true</overWrite>
+                                    <classifier>full</classifier>
                                     <version>${camelot.version}</version>
                                 </artifactItem>
                             </artifactItems>
