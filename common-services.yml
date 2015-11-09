@@ -11,6 +11,7 @@ camelot:
     - src/main/resources/camelot/conf:/etc/camelot/conf:ro
     - target/extensions:/etc/camelot/extensions:ro
     - target/camelot/lib:/etc/camelot/lib
+    - target/camelot/log:/etc/camelot/log
     - target/camelot/plugins:/etc/camelot/plugins:ro
     - target/camelot/webapps:/etc/camelot/webapps:ro
   command: /bin/bash -c '/etc/camelot/bin/camelot.sh start && touch /etc/camelot/log/camelot-full.log && tail -f /etc/camelot/log/camelot-full.log'

@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ru.yandex.qatools.camelot</groupId>
     <artifactId>camelot-sandbox</artifactId>
-    <version>2.4.4-SNAPSHOT</version>
+    <version>2.4.5-SNAPSHOT</version>
 
     <packaging>jar</packaging>
     <name>camelot-sandbox</name>
@@ -12,23 +12,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.7</java.version>
-        <camelot.version>2.4.4-SNAPSHOT</camelot.version>
+        <camelot.version>2.4.5-SNAPSHOT</camelot.version>
         <slf4j.version>1.7.12</slf4j.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.10</artifactId>
-            <version>0.8.2.2</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-kafka</artifactId>
-            <version>2.15.3</version>
-            <scope>runtime</scope>
-        </dependency>
         <dependency>
             <groupId>ru.yandex.qatools.camelot</groupId>
             <artifactId>camelot-api</artifactId>
@@ -36,7 +24,7 @@
         </dependency>
         <dependency>
             <groupId>ru.yandex.qatools.camelot</groupId>
-            <artifactId>camelot-kafka</artifactId>
+            <artifactId>camelot-mongodb</artifactId>
             <version>${camelot.version}</version>
             <scope>runtime</scope>
         </dependency>
@@ -117,7 +105,7 @@
                                 </artifactItem>
                                 <artifactItem>
                                     <groupId>ru.yandex.qatools.camelot</groupId>
-                                    <artifactId>camelot-hazelcast</artifactId>
+                                    <artifactId>camelot-mongodb</artifactId>
                                     <overWrite>true</overWrite>
                                     <classifier>full</classifier>
                                     <version>${camelot.version}</version>

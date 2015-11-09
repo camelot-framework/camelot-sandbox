@@ -10,8 +10,6 @@ activemq:
   image: rmohr/activemq
   user: root
   restart: always
-  links:
-    - dns:dns
   ports:
     - 61616:61616
     - 8616:8616
@@ -42,23 +40,36 @@ camelot2:
   environment:
     DNSDOCK_ALIAS: camelot2.dc
 
-hazelcast1:
-  extends:
-    file: common-services.yml
-    service: hazelcast
+mongodb1:
+  image: mongo:latest
+  expose:
+    - 27017:27017
+  dns: 172.17.42.1
+  command: /usr/bin/mongod --replSet sandbox --smallfiles
   environment:
-    DNSDOCK_ALIAS: hazelcast1.dc
+    DNSDOCK_ALIAS: mongodb1.dc
 
-hazelcast2:
-  extends:
-    file: common-services.yml
-    service: hazelcast
+mongodb2:
+  image: mongo:latest
+  expose:
+    - 27017:27017
+  dns: 172.17.42.1
+  command: /usr/bin/mongod --replSet sandbox --smallfiles
   environment:
-    DNSDOCK_ALIAS: hazelcast2.dc
+    DNSDOCK_ALIAS: mongodb2.dc
 
-hazelcast3:
-  extends:
-    file: common-services.yml
-    service: hazelcast
+mongodb3:
+  image: mongo:latest
+  expose:
+    - 27017:27017
+  dns: 172.17.42.1
+  command: /usr/bin/mongod --replSet sandbox --smallfiles
   environment:
-    DNSDOCK_ALIAS: hazelcast3.dc
+    DNSDOCK_ALIAS: mongodb3.dc
+
+mongoinit:
+  image: tutum/mongodb:latest
+  dns: 172.17.42.1
+  volumes:
+    - src/main/resources/mongodb:/etc/mongodb:ro
+  command: /bin/bash /etc/mongodb/init.sh

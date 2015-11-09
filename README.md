@@ -1,5 +1,5 @@
 # Camelot Sandbox
-Example allowing to launch camelot plugin project with the ActiveMQ & Hazelcast multi-node environment
+Example allowing to launch camelot plugin project with the ActiveMQ & MongoDB multi-node environment
 
 ## Prerequisites
 * Docker >= 1.6.2
