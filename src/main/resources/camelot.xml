@@ -2,7 +2,10 @@
 <plugins-config xmlns="urn:config.camelot.qatools.yandex.ru">
     <source>
         <artifact>${project.groupId}:${project.artifactId}:${project.version}</artifact>
-        <plugin id="collector">
+        <plugin id="logger">
+            <processor>sandbox.Logger</processor>
+        </plugin>
+        <plugin id="collector" source="logger">
             <aggregator>sandbox.Collector</aggregator>
             <resource>sandbox.InputResource</resource>
         </plugin>

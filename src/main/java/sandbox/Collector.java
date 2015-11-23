@@ -12,6 +12,7 @@ import ru.yandex.qatools.fsm.annotations.Transit;
 import ru.yandex.qatools.fsm.annotations.Transitions;
 
 import static java.lang.System.currentTimeMillis;
+import static java.lang.Thread.sleep;
 
 @Aggregate
 @Filter(instanceOf = {String.class})

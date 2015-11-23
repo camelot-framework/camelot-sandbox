@@ -21,7 +21,7 @@ public class InputResource {
     @MainInput
     public EventProducer input;
 
-    @Repository
+    @Repository(Collector.class)
     private AggregatorRepository<State> repo;
 
     @GET
