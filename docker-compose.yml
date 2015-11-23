@@ -16,7 +16,7 @@ activemq:
     - 8116:8116
   dns: 172.17.42.1
   volumes:
-    - src/main/resources/activemq/conf:/etc/activemq/conf:ro
+    - ./src/main/resources/activemq/conf:/etc/activemq/conf:ro
   environment:
     ACTIVEMQ_CONF: /etc/activemq/conf
     ACTIVEMQ_DATA: /var/lib/activemq/data
