@@ -19,8 +19,8 @@ zookeeper:
     HOSTNAME: zookeeper.dc
     DNSDOCK_ALIAS: zookeeper.dc
   volumes:
-    - target/logs/zk1:/logs
-    - target/data/zk1:/data
+    - ./target/logs/zk1:/logs
+    - ./target/data/zk1:/data
 
 kafka1:
   extends:
