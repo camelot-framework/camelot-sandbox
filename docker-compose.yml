@@ -20,16 +20,16 @@ rabbitmq1:
     file: common-services.yml
     service: rabbitmq
   hostname: rabbitmq1
-  domainname: dc
   environment:
     DNSDOCK_ALIAS: 'rabbitmq1.dc'
+    RABBITMQ_NODENAME: rabbit
 
 rabbitmq2:
   extends:
     file: common-services.yml
     service: rabbitmq
   hostname: rabbitmq2
-  domainname: dc
   environment:
     DNSDOCK_ALIAS: 'rabbitmq2.dc'
+    RABBITMQ_NODENAME: rabbit
 
