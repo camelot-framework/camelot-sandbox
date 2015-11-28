@@ -14,18 +14,13 @@
         <java.version>1.8</java.version>
         <camelot.version>2.4.8-SNAPSHOT</camelot.version>
         <slf4j.version>1.7.12</slf4j.version>
+        <camel.version>2.16.0</camel.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>ru.yandex.qatools.camelot</groupId>
-            <artifactId>camelot-rabbitmq</artifactId>
-            <version>${camelot.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>ru.yandex.qatools.camelot</groupId>
-            <artifactId>camelot-api</artifactId>
+            <artifactId>camelot-qpid</artifactId>
             <version>${camelot.version}</version>
         </dependency>
         <dependency>

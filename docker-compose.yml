@@ -15,21 +15,24 @@ camelot:
   environment:
     DNSDOCK_ALIAS: camelot.dc
 
-rabbitmq1:
+qpid1:
   extends:
     file: common-services.yml
-    service: rabbitmq
-  hostname: rabbitmq1
+    service: qpid
   environment:
-    DNSDOCK_ALIAS: 'rabbitmq1.dc'
-    RABBITMQ_NODENAME: rabbit
+    DNSDOCK_ALIAS: 'qpid1.dc'
 
-rabbitmq2:
+qpid2:
   extends:
     file: common-services.yml
-    service: rabbitmq
-  hostname: rabbitmq2
+    service: qpid
   environment:
-    DNSDOCK_ALIAS: 'rabbitmq2.dc'
-    RABBITMQ_NODENAME: rabbit
+    DNSDOCK_ALIAS: 'qpid2.dc'
+
+qpid3:
+  extends:
+    file: common-services.yml
+    service: qpid
+  environment:
+    DNSDOCK_ALIAS: 'qpid3.dc'
 

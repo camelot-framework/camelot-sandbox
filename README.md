@@ -1,6 +1,6 @@
 # Camelot Sandbox
 
-Example allowing to launch camelot plugin project with the default single-node environment
+Example allowing to launch camelot plugin project with the qpid multi-node environment
 
 ## Prerequisites
 * Docker >= 1.6.2

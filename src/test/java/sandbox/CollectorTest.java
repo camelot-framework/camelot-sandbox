@@ -36,7 +36,7 @@ public class CollectorTest {
         helper.send("body1");
         helper.send("body1");
         collectorEP.assertIsSatisfied(2000);
-        verify(collector, timeout(2000).times(3)).collect(any(State.class), eq("body1"));
-        assertThat(((State) storage.getActual("body1")).index, equalTo(3L));
+        verify(collector, timeout(2000).times(3)).collect(any(State.class), eq("body1-logged"));
+        assertThat(((State) storage.getActual("body1-logged")).index, equalTo(3L));
     }
 }

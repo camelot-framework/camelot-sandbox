@@ -16,27 +16,10 @@ camelot:
   command: /bin/bash /etc/camelot/conf/run.sh
   environment:
     JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
-hazelcast:
-  build: src/main/resources/hazelcast/
-  expose:
-    - 5701:5701
-  dns: 172.17.42.1
-  environment:
-    HZ_VERSION: 3.5
-  volumes:
-    - ./src/main/resources/hazelcast:/run:ro
-  command: /bin/sh -c '/run/run.sh'
 
-rabbitmq:
-  image: rabbitmq:3-management
+qpid:
+  image: smecsia/qpid:0.32
   dns: 172.17.42.1
-  environment:
-    RABBITMQ_ERLANG_COOKIE: 'rabbit'
-  volumes:
-    - ./target/classes/rabbitmq:/etc/rabbitmq
-  command: '/bin/bash /etc/rabbitmq/run.sh'
   expose:
     - 5672:5672
-    - 4369:4369
-    - 15672:15672
-    - 25672:25672
+    - 8080:8080
